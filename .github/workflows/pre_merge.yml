@@ -1,0 +1,30 @@
+name: Pre-Merge Actions
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Grant execute permission for scripts
+        run: chmod +x gradlew
+      - run: ./ciScripts/buildPlugin.sh
+        env:
+          VERSION: 999
+          RELEASE_NOTES: '-This is a test and should not be released.\n-Also a test there might be a character minimum'
+      - uses: ChrisCarini/intellij-platform-plugin-verifier-action@v1.0.7
+        with:
+          ide-versions: |
+            ideaIC:2020.1.2
+            ideaIU:2020.1.2
+            ideaIC:LATEST-EAP-SNAPSHOT
+            ideaIU:LATEST-EAP-SNAPSHOT

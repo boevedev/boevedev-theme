@@ -1,0 +1,22 @@
+<idea-plugin>
+    <id>org.example.boevedev-theme</id>
+    <name>Theme Boeve Software Development</name>
+    <vendor email="support@boeve.dev" url="https://boeve.dev">Boeve Software Development</vendor>
+
+    <description><![CDATA[
+    Custom theme, inspired by the dark theme of GitHub, which is friendly for your eyes and keeps code readable
+    ]]></description>
+
+    <!-- please see https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+        <themeProvider id="4fda11c9-b447-4243-bc38-be96c27d6ade" path="/boevedev_theme.theme.json"/>
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+    </actions>
+</idea-plugin>
